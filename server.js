@@ -67,24 +67,30 @@ app.get("/televisions", async (req, res) => {
 //   }
 // });
 
-// app.get("/", async (req, res) => {
-//   try {
-//     const featuredProductsResult = await pool.query("SELECT * FROM MobilePhones LIMIT 4");
-//     const computersResult = await pool.query("SELECT * FROM Computers");
-//     const televisionsResult = await pool.query("SELECT * FROM Televisions");
+app.get("/", async (req, res) => {
+	try {
+		const featuredProductsResult = await pool.query(
+			"SELECT * FROM MobilePhones LIMIT 4"
+		);
+		const computersResult = await pool.query(
+			"SELECT * FROM Computers"
+		);
+		const televisionsResult = await pool.query(
+			"SELECT * FROM Televisions"
+		);
 
-//     const products = {
-//       featuredProducts: featuredProductsResult.rows,
-//       computers: computersResult.rows,
-//       televisions: televisionsResult.rows
-//     };
+		const products = {
+			featuredProducts: featuredProductsResult.rows,
+			computers: computersResult.rows,
+			televisions: televisionsResult.rows,
+		};
 
-//     res.render("index", { products });
-//   } catch (err) {
-//     console.error(err);
-//     res.send("Error " + err);
-//   }
-// });
+		res.render("index", { products });
+	} catch (err) {
+		console.error(err);
+		res.send("Error " + err);
+	}
+});
 
 app.use(express.urlencoded({ extended: true }));
 
