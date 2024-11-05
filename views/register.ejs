@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E-Commerce Template</title>
+
+    <link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <div class="col-12">
+                <header class="row">
+                    <!-- Top Nav -->
+                    <div class="col-12 bg-dark py-2 d-md-block d-none">
+                        <div class="row">
+                            <div class="col-auto me-auto">
+                                <ul class="top-nav">
+                                    <li>
+                                        <a href="tel:+123-456-7890"><i class="fa fa-phone-square me-2"></i>+123-456-7890</a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:mail@ecom.com"><i class="fa fa-envelope me-2"></i>mail@ecom.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-auto">
+                                <ul class="top-nav">
+                                    <li>
+                                        <a href="#"><i class="fas fa-user-edit me-2"></i>Register</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fas fa-sign-in-alt me-2"></i>Login</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Header -->
+                    <div class="col-12 bg-white pt-4">
+                        <div class="row">
+                            <div class="col-lg-auto">
+                                <div class="site-logo text-center text-lg-left">
+                                    <a href="/">E-Commerce</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
+                                <form action="#">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="search" class="form-control border-dark" placeholder="Search..." required>
+                                            <button class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-auto text-center text-lg-left header-item-holder">
+                                <a href="#" class="header-item">
+                                    <i class="fas fa-heart me-2"></i><span id="header-favorite">0</span>
+                                </a>
+                                <a href="/cart" class="header-item">
+                                    <i class="fas fa-shopping-bag me-2"></i><span id="header-qty" class="me-3">2</span>
+                                    <i class="fas fa-money-bill-wave me-2"></i><span id="header-price">$4,000</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Nav -->
+                        <div class="row">
+                            <nav class="navbar navbar-expand-lg navbar-light bg-white col-12">
+                                <button class="navbar-toggler d-lg-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="mainNav">
+                                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <!-- Menu Categories -->
+                                        <% const categories = ['Electronics', 'Fashion', 'Books']; %>
+                                        <% categories.forEach(category => { %>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="<%= category.toLowerCase() %>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= category %></a>
+                                            <div class="dropdown-menu" aria-labelledby="<%= category.toLowerCase() %>">
+                                                <a class="dropdown-item" href="#">Item 1</a>
+                                                <a class="dropdown-item" href="#">Item 2</a>
+                                            </div>
+                                        </li>
+                                        <% }) %>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <div class="col-12">
+                <!-- Main Content -->
+                <div class="row">
+                    <div class="col-12 mt-3 text-center text-uppercase">
+                        <h2>Register</h2>
+                    </div>
+                </div>
+
+                <main class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-8 mx-auto bg-white py-3 mb-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <% if (typeof message !== 'undefined' && message !== '') { %>
+                                    <div class="alert alert-info"><%= message %></div>
+                                <% } %>
+                                <form action="/register" method="POST">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" id="name" name="name" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" id="password" name="password" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password-confirm" class="form-label">Confirm Password</label>
+                                        <input type="password" id="password-confirm" name="passwordConfirm" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" id="agree" name="agree" class="form-check-input" required>
+                                        <label for="agree" class="form-check-label ml-2">I agree to Terms and Conditions</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-outline-dark">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+            <div class="col-12 align-self-end">
+                <!-- Footer -->
+                <footer class="row">
+                    <div class="col-12 bg-dark text-white pb-3 pt-5">
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-4 text-center text-sm-left mb-sm-0 mb-3">
+                                <div class="footer-logo">
+                                    <a href="/">E-Commerce</a>
+                                </div>
+                                <address>221B Baker Street<br>London, England</address>
+                                <div>
+                                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-8 text-center text-sm-left mb-sm-0 mb-3">
+                                <h4>Who are we?</h4>
+                                <p>Lorem ipsum dolor sit amet...</p>
+                            </div>
+                            <div class="col-lg-3 col-sm-4 text-center text-sm-left">
+                                <h4>Quick Links</h4>
+                                <ul class="footer-nav">
+                                    <!-- <li><a href="/">Home</a></li>
+                                    <li><a href="/contact">Contact Us</a></li>
+                                    <li><a href="/about">About Us</a></li> -->
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-sm-6 text-center text-sm-left">
+                                <h4>Newsletter</h4>
+                                <form action="#">
+                                    <input type="text" class="form-control mb-3" placeholder="Enter your email..." required>
+                                    <button class="btn btn-outline-light">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center text-white bg-primary py-2">
+                        <p class="mb-0">&copy; 2020 E-Commerce. All rights reserved.</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
