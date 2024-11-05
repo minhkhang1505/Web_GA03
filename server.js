@@ -12,7 +12,7 @@ const pool = new Pool({
 	database: process.env.DB_NAME,
 	password: process.env.DB_PASSWORD,
 	port: process.env.DB_PORT,
-  });
+});
 
 // Set the view engine to EJS
 app.set("view engine", "ejs");
@@ -21,16 +21,9 @@ app.set("views", "views");
 // Middleware to serve static files
 app.use(express.static("public"));
 
-const pool = new Pool({
-  user: process.env.DB_USERNAME,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-});
-
 app.get("/computers", async (req, res) => {
 	try {
+		message = "";
 	  const result = await pool.query("SELECT * FROM Computers");
 	  res.render("category", { products: result.rows });
 	} catch (err) {
@@ -41,8 +34,11 @@ app.get("/computers", async (req, res) => {
 
 app.get("/category", async (req, res) => {
 	try {
+	message = "";
+		
 	  const result = await pool.query("SELECT * FROM MobilePhones");
 	  res.render("category", { products: result.rows });
+	  
 	} catch (err) {
 	  console.error(err);
 	  res.send("Error " + err);
@@ -51,6 +47,7 @@ app.get("/category", async (req, res) => {
 
 app.get("/televisions", async (req, res) => {
 	try {
+		message = "";
 	  const result = await pool.query("SELECT * FROM Televisions");
 	  res.render("category", { products: result.rows });
 	} catch (err) {
