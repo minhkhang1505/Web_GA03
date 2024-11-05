@@ -4,13 +4,15 @@
  */
 exports.up = async function (knex) {
 	await knex.raw(`
-    CREATE TABLE users (
+    CREATE TABLE computers (
     ID SERIAL PRIMARY KEY,
-    username VARCHAR(255) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    salt VARCHAR(255) NOT NULL
-);`);
+    name VARCHAR(255) NOT NULL,
+    price INT NOT NULL,
+    imageurl VARCHAR(255) NOT NULL,
+    detail TEXT NOT NULL
+);
+
+    `);
 };
 
 /**
@@ -18,5 +20,5 @@ exports.up = async function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = async function (knex) {
-	await knex.raw(`DROP TABLE users`);
+	await knex.raw(`DROP TABLE computers;`);
 };
