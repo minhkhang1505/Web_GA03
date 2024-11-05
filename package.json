@@ -9,7 +9,7 @@
 		"migrate": "knex migrate:latest",
 		"seed": "knex seed:run",
 		"setup": "npm run create-db && npm run migrate && npm run seed",
-		"backend": "nodemon server.js --watch ./views --ext ejs,html"
+		"dev": "nodemon server.js --watch ./views --ext ejs,html"
 	},
 	"author": "",
 	"license": "ISC",
