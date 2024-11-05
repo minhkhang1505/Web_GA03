@@ -1,7 +1,7 @@
 const express = require("express");
 const { Pool } = require("pg");
 const app = express();
-const testRoute = require("./routes/testRoute");
+const indexRoute = require("./apps/home/indexRoute");
 const { randSequence, genSalt } = require("./utils/salt");
 const { newMd5Hash } = require("./utils/hasher/md5");
 require("dotenv").config();
@@ -20,6 +20,8 @@ app.set("views", "views");
 
 // Middleware to serve static files
 app.use(express.static("public"));
+
+app.use("/", indexRoute);
 
 app.get("/computers", async (req, res) => {
 	try {
@@ -54,8 +56,35 @@ app.get("/televisions", async (req, res) => {
 		res.send("Error " + err);
 	}
 });
-// Use the user routes
-app.use("/", testRoute);
+
+// app.get("/", async (req, res) => {
+//   try {
+//     const result = await pool.query("SELECT * FROM MobilePhones");
+//     res.render("index", { products: result.rows });
+//   } catch (err) {
+//     console.error(err);
+//     res.send("Error " + err);
+//   }
+// });
+
+// app.get("/", async (req, res) => {
+//   try {
+//     const featuredProductsResult = await pool.query("SELECT * FROM MobilePhones LIMIT 4");
+//     const computersResult = await pool.query("SELECT * FROM Computers");
+//     const televisionsResult = await pool.query("SELECT * FROM Televisions");
+
+//     const products = {
+//       featuredProducts: featuredProductsResult.rows,
+//       computers: computersResult.rows,
+//       televisions: televisionsResult.rows
+//     };
+
+//     res.render("index", { products });
+//   } catch (err) {
+//     console.error(err);
+//     res.send("Error " + err);
+//   }
+// });
 
 app.use(express.urlencoded({ extended: true }));
 
