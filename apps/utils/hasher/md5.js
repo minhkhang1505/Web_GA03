@@ -12,4 +12,4 @@ function newMd5Hash() {
     return new Md5Hash();
 }
 
-module.exports = { newMd5Hash};
+module.exports = {newMd5Hash};

@@ -3,6 +3,7 @@ const { StatusCodes, getReasonPhrase } = require('http-status-codes');
 
 async function renderTelevisionCategoryPage(req, res) {
     try {
+        
         const queryResult = await televisionService.getAllTelevisions();
         res.render('category', { title: "Television Category", products: queryResult.rows, category: "televisions" });
     } catch (error) {
@@ -15,6 +16,7 @@ async function renderTelevisionCategoryPage(req, res) {
 
 async function renderTelevisionDetailPage(req, res) {
     try {
+       
         const televisionID = req.params.id;
         const queryResult = await televisionService.getTelevisionByID(televisionID);
         res.render('product', { product: queryResult.rows[0] });
