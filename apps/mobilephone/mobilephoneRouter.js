@@ -3,6 +3,6 @@ const mobilephoneController = require("./mobilephoneController");
 
 router.get("/", mobilephoneController.renderMobilephoneCategoryPage);
 
-router.get("/:televisionId", mobilephoneController.renderMobilephoneDetailPage);
+router.get("/:id", mobilephoneController.renderMobilephoneDetailPage);
 
 module.exports = router;

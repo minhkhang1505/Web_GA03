@@ -51,12 +51,14 @@
                 </div>
               </div>
             </div>
+            <!-- Top Nav -->
+
             <!-- Header -->
             <div class="col-12 bg-white pt-4">
               <div class="row">
                 <div class="col-lg-auto">
                   <div class="site-logo text-center text-lg-left">
-                    <a href="index.html">E-Commerce</a>
+                    <a href="/">E-Commerce</a>
                   </div>
                 </div>
                 <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
@@ -126,13 +128,13 @@
                           class="dropdown-menu"
                           aria-labelledby="productList"
                         >
-                          <a class="dropdown-item" href="computers"
+                          <a class="dropdown-item" href="/computers"
                             >Computers</a
                           >
-                          <a class="dropdown-item" href="category"
+                          <a class="dropdown-item" href="/mobilephones"
                             >Mobile Phones</a
                           >
-                          <a class="dropdown-item" href="televisions"
+                          <a class="dropdown-item" href="/televisions"
                             >Television</a
                           >
                         </div>
@@ -153,12 +155,12 @@
               <div class="col-12 bg-white text-center h-100 product-item">
                 <div class="row h-100">
                   <div class="col-12 p-0 mb-3">
-                    <a href="product.html">
+                    <a href="/<%= category %>/<%= product.id %>">
                       <img src="<%= product.imageurl %>" class="img-fluid" />
                     </a>
                   </div>
                   <div class="col-12 mb-3">
-                    <a href="product.html" class="product-name"
+                    <a href="/<%= category %>/<%= product.id %>" class="product-name"
                       ><%= product.name %></a
                     >
                   </div>
@@ -216,7 +218,7 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="footer-logo">
-                        <a href="index.html">E-Commerce</a>
+                        <a href="/">E-Commerce</a>
                       </div>
                     </div>
                     <div class="col-12">

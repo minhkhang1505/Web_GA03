@@ -11,8 +11,8 @@ async function getAllMobilephones () {
 }
 
 async function getMobilephoneByID(id) {
-    try {
-        const result = await pool.query('SELECT * FROM mobilephones WHERE id = ?', [id]);
+    try {       
+        const result = await pool.query('SELECT * FROM mobilephones WHERE ID = $1', [id]);
         return result;
     } catch (error) {
         console.error('Error fetching mobilephone by ID', error);
