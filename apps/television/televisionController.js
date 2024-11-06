@@ -3,10 +3,10 @@ const { StatusCodes, getReasonPhrase } = require('http-status-codes');
 
 async function renderTelevisionCategoryPage(req, res) {
     try {
-        const televisionsQueryResult = await televisionService.getAllTelevisions();
-        res.render('category', { products: televisionsQueryResult.rows });
+        const queryResult = await televisionService.getAllTelevisions();
+        res.render('category', { title: "Television Category", products: queryResult.rows });
     } catch (error) {
-        console.error('Error rendering television page:', error);
+        console.error('Error rendering television category page:', error);
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(
             getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR)
         );
@@ -15,9 +15,9 @@ async function renderTelevisionCategoryPage(req, res) {
 
 async function renderTelevisionDetailPage(req, res) {
     try {
-        const televisionId = req.params.id;
-        const televisionQueryResult = await televisionService.getTelevisionById(televisionId);
-        res.render('product', { product: televisionQueryResult.rows[0] });
+        const televisionID = req.params.id;
+        const queryResult = await televisionService.getTelevisionByID(televisionID);
+        res.render('product', { product: queryResult.rows[0] });
     } catch (error) {
         console.error('Error rendering television detail page:', error);
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(

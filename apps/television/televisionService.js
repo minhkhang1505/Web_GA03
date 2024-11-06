@@ -5,23 +5,23 @@ async function getAllTelevisions () {
         const result = await pool.query('SELECT * FROM televisions');
         return result;
     } catch (error) {
-        console.error('Error televisionService.getAllTelevision:', error);
+        console.error('Error fetching all televisions', error);
         return [];
     }
 }
 
-async function getTelevisionById(id) {
+async function getTelevisionByID(id) {
     try {
         const result = await pool.query('SELECT * FROM televisions WHERE id = ?', [id]);
         return result;
     } catch (error) {
-        console.error('Error televisionService.getTelevisionById:', error);
+        console.error('Error fetching television by ID', error);
         return [];
     }
 }
 
 module.exports = {
     getAllTelevisions,
-    getTelevisionById,
+    getTelevisionByID,
 }
     
