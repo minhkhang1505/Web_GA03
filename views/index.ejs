@@ -10,6 +10,9 @@
 		<link rel="stylesheet" href="/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/css/all.min.css" />
 		<link rel="stylesheet" href="/css/style.css" />
+		<link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet">
 		<!-- Bootstrap CSS -->
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -69,7 +72,7 @@
 										</li>
 										<li>
 											<a
-												href="login.html"
+												href="login"
 												><i
 													class="fas fa-sign-in-alt me-2"
 												></i
@@ -290,7 +293,7 @@
 										class="col-12 p-0 mb-3"
 									>
 										<a
-											href="product.html"
+											href="<%= mobilepath %>/<%= product.id %>"
 										>
 											<img
 												src="<%= product.imageurl %>"
@@ -302,7 +305,7 @@
 										class="col-12 mb-3"
 									>
 										<a
-											href="product.html"
+											href="<%= mobilepath %>/<%= product.id %>"
 											class="product-name"
 											><%= product.name %></a
 										>
@@ -356,7 +359,7 @@
 											class="col-12 p-0 mb-3"
 										>
 											<a
-												href="product.html"
+												href="<%= computerpath %>/<%= product.id %>"
 											>
 												<img
 													src="<%= product.imageurl %>"
@@ -368,7 +371,7 @@
 											class="col-12 mb-3"
 										>
 											<a
-												href="product.html"
+												href="<%= computerpath %>/<%= product.id %>"
 												class="product-name"
 												><%= product.name %></a
 											>
@@ -422,7 +425,7 @@
 											class="col-12 p-0 mb-3"
 										>
 											<a
-												href="product.html"
+												href="<%= televisionpath %>/<%= product.id %>"
 											>
 												<img
 													src="<%= product.imageurl %>"
@@ -434,7 +437,7 @@
 											class="col-12 mb-3"
 										>
 											<a
-												href="product.html"
+												href="<%= televisionpath %>/<%= product.id %>"
 												class="product-name"
 												><%= product.name %></a
 											>
@@ -493,7 +496,7 @@
 													class="footer-logo"
 												>
 													<a
-														href="index.html"
+														href="/"
 														>E-Commerce</a
 													>
 												</div>
