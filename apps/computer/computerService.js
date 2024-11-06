@@ -12,7 +12,7 @@ async function getAllComputers () {
 
 async function getComputerByID(id) {
     try {
-        const result = await pool.query('SELECT * FROM computers WHERE id = ?', [id]);
+        const result = await pool.query('SELECT * FROM computers WHERE ID = $1', [id]);
         return result;
     } catch (error) {
         console.error('Error fetching computer by ID', error);

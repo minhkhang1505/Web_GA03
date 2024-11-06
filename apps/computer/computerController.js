@@ -4,7 +4,7 @@ const { StatusCodes, getReasonPhrase } = require('http-status-codes');
 async function renderCompterCategoryPage(req, res) {
     try {
         const queryResult = await computerService.getAllComputers();
-        res.render('category', { title:"Computer Category", products: queryResult.rows });
+        res.render('category', { title:"Computer Category", products: queryResult.rows, category: "computers" });
     } catch (error) {
         console.error('Error rendering computer category page:', error);
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(

@@ -12,7 +12,7 @@ async function getAllTelevisions () {
 
 async function getTelevisionByID(id) {
     try {
-        const result = await pool.query('SELECT * FROM televisions WHERE id = ?', [id]);
+        const result = await pool.query('SELECT * FROM televisions WHERE ID = $1', [id]);
         return result;
     } catch (error) {
         console.error('Error fetching television by ID', error);
