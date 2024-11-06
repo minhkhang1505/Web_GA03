@@ -3,6 +3,6 @@ const computerController = require("./computerController");
 
 router.get("/", computerController.renderCompterCategoryPage);
 
-router.get("/:televisionId", computerController.renderComputerDetailPage);
+router.get("/:id", computerController.renderComputerDetailPage);
 
 module.exports = router;

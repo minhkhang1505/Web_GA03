@@ -4,7 +4,7 @@ const { StatusCodes, getReasonPhrase } = require('http-status-codes');
 async function renderTelevisionCategoryPage(req, res) {
     try {
         const queryResult = await televisionService.getAllTelevisions();
-        res.render('category', { title: "Television Category", products: queryResult.rows });
+        res.render('category', { title: "Television Category", products: queryResult.rows, category: "televisions" });
     } catch (error) {
         console.error('Error rendering television category page:', error);
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(
