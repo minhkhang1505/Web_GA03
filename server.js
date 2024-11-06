@@ -1,10 +1,12 @@
 const express = require("express");
 const { Pool } = require("pg");
-const app = express();
-const indexRoute = require("./apps/home/indexRoute");
+require("dotenv").config();
+
 const { randSequence, genSalt } = require("./utils/salt");
 const { newMd5Hash } = require("./utils/hasher/md5");
-require("dotenv").config();
+
+const indexRouter = require("./apps/home/indexRouter");
+const televisionRouter = require("./apps/television/televisionRouter");
 
 const pool = new Pool({
 	user: process.env.DB_USERNAME,
@@ -14,14 +16,17 @@ const pool = new Pool({
 	port: process.env.DB_PORT,
 });
 
+const app = express();
 // Set the view engine to EJS
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-// Middleware to serve static files
+// Middleware
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
-app.use("/", indexRoute);
+app.use("/", indexRouter);
+app.use("/televisions", televisionRouter);
 
 app.get("/computers", async (req, res) => {
 	try {
@@ -34,11 +39,11 @@ app.get("/computers", async (req, res) => {
 	}
 });
 
-app.get("/category", async (req, res) => {
+app.get("/mobilephones", async (req, res) => {
 	try {
 		message = "";
 
-		const result = await pool.query("SELECT * FROM MobilePhones");
+		const result = await pool.query("SELECT * FROM mobilephones");
 		res.render("category", { products: result.rows });
 	} catch (err) {
 		console.error(err);
@@ -46,16 +51,16 @@ app.get("/category", async (req, res) => {
 	}
 });
 
-app.get("/televisions", async (req, res) => {
-	try {
-		message = "";
-		const result = await pool.query("SELECT * FROM Televisions");
-		res.render("category", { products: result.rows });
-	} catch (err) {
-		console.error(err);
-		res.send("Error " + err);
-	}
-});
+// app.get("/televisions", async (req, res) => {
+// 	try {
+// 		message = "";
+// 		const result = await pool.query("SELECT * FROM Televisions");
+// 		res.render("category", { products: result.rows });
+// 	} catch (err) {
+// 		console.error(err);
+// 		res.send("Error " + err);
+// 	}
+// });
 
 // app.get("/", async (req, res) => {
 //   try {
@@ -92,7 +97,6 @@ app.get("/televisions", async (req, res) => {
 // 	}
 // });
 
-app.use(express.urlencoded({ extended: true }));
 
 app.post("/register", async (req, res) => {
 	const { name, email, password, passwordConfirm, agree } = req.body;
