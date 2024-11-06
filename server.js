@@ -7,7 +7,8 @@ const { newMd5Hash } = require("./utils/hasher/md5");
 
 const indexRouter = require("./apps/home/indexRouter");
 const televisionRouter = require("./apps/television/televisionRouter");
-const mobilephoneRouter = require("./apps/mobilephones/mobilephoneRouter");
+const mobilephoneRouter = require("./apps/mobilephone/mobilephoneRouter");
+const computerRouter = require("./apps/computer/computerRouter");
 
 const pool = new Pool({
 	user: process.env.DB_USERNAME,
@@ -29,17 +30,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 app.use("/televisions", televisionRouter);
 app.use("/mobilephones", mobilephoneRouter);
+app.use("/computers", computerRouter);
 
-app.get("/computers", async (req, res) => {
-	try {
-		message = "";
-		const result = await pool.query("SELECT * FROM Computers");
-		res.render("category", { products: result.rows });
-	} catch (err) {
-		console.error(err);
-		res.send("Error " + err);
-	}
-});
+// app.get("/computers", async (req, res) => {
+// 	try {
+// 		message = "";
+// 		const result = await pool.query("SELECT * FROM Computers");
+// 		res.render("category", { products: result.rows });
+// 	} catch (err) {
+// 		console.error(err);
+// 		res.send("Error " + err);
+// 	}
+// });
 
 // app.get("/mobilephones", async (req, res) => {
 // 	try {
