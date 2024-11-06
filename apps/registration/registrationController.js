@@ -3,7 +3,7 @@ const { StatusCodes, getReasonPhrase } = require('http-status-codes');
 const salt = require('../utils/salt');
 const md5 = require('../utils/hasher/md5');
 
-async function renderRegisterPage(req, res) {
+async function handleRegisterRequest(req, res) {
     try {
         const { name, email, password, passwordConfirm, agree } = req.body;
         if (!agree) {
@@ -34,7 +34,20 @@ async function renderRegisterPage(req, res) {
 
         res.render("register", { message });
     } catch (error) {
-        console.error('Error rendering register page:', error);
+        console.error('Error handler register:', error);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(
+            getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR)
+        );
+
+    }
+}
+
+async function renderRegistrationPage(req, res) {
+    try {
+        message="";
+        res.render('register');
+    } catch (error) {
+        console.error('Error handler register:', error);
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(
             getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR)
         );
@@ -42,5 +55,6 @@ async function renderRegisterPage(req, res) {
 }
 
 module.exports = {
-    renderRegisterPage,
+    handleRegisterRequest,
+    renderRegistrationPage,
 };

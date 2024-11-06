@@ -33,10 +33,6 @@ app.use("/mobilephones", mobilephoneRouter);
 app.use("/computers", computerRouter);
 app.use("/register",registrationRouter);
 
-app.get("/register", (req, res) => {
-	res.render("register");
-});
-
 // app.get("/computers", async (req, res) => {
 // 	try {
 // 		message = "";
