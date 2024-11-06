@@ -5,7 +5,7 @@ async function renderHomePage(req, res) {
 	try {
 		const productsObject =
 			await indexService.getAllProductsAsObject();
-		res.render("index", { products: productsObject });
+		res.render("index", { products: productsObject, mobilepath: "mobilephones", computerpath: "computers", televisionpath: "televisions" });
 	} catch (error) {
 		console.error("Error rendering home page:", error);
 		res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(
