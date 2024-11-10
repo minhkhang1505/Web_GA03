@@ -4,7 +4,7 @@ require("dotenv").config();
 let pool;
 
 console.log("DB_CONNECTION_STRING: ", process.env.DB_CONNECTION_STRING);
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'PROD') {
     // Production Pool
     pool = new Pool({
         connectionString: process.env.DB_CONNECTION_STRING,
