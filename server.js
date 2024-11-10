@@ -23,8 +23,7 @@ app.use("/mobilephones", mobilephoneRouter);
 app.use("/computers", computerRouter);
 app.use("/register",registrationRouter);
 
-const HOST = process.env.SERVER_HOST || "localhost";
 const PORT = process.env.SERVER_PORT || 3000;
-app.listen(PORT, HOST, () => {
+app.listen(PORT, () => {
 	console.log(`Server is running at http://${HOST}:${PORT}`);
 });

@@ -14,7 +14,7 @@
 		"seed:prod": "knex seed:run --env production",
 		"setup:prod": "npm run create-db && npm run migrate:prod && npm run seed:prod",
 		"build": "npm run setup:prod",
-		"start": "node server.js"
+		"start": "npm run build && node server.js"
 	},
 	"author": "Manh Trong Kien, Ma Cat Huynh, Nguyen Minh Khang",
 	"license": "ISC",
