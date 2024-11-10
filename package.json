@@ -1,19 +1,22 @@
 {
 	"name": "wad_ga03",
 	"version": "1.0.0",
-	"description": "**E-Commerce Template**",
-	"main": "index.html",
+	"description": "**HCMUS-WAD-GA03**",
+	"main": "index.ejs",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"create-db": "node createDatabase.js",
-		"migrate": "knex migrate:latest",
-		"seed": "knex seed:run",
-		"setup": "npm run create-db && npm run migrate && npm run seed",
-		"dev": "nodemon server.js --watch ./views --ext ejs,html",
-		"build": "npm run setup",
-		"start": "npm run build && node server.js"
+		"migrate:dev": "knex migrate:latest --env development",
+		"seed:dev": "knex seed:run --env development",
+		"setup:dev": "npm run create-db && npm run migrate-dev && npm run seed-dev",
+		"dev": "npm run setup-dev && nodemon server.js --watch ./views --ext ejs,html",
+		"migrate:prod": "knex migrate:latest --env production",
+		"seed:prod": "knex seed:run --env production",
+		"setup:prod": "npm run create-db && npm run migrate:prod && npm run seed:prod",
+		"build": "npm run setup:prod",
+		"start": "node server.js"
 	},
-	"author": "",
+	"author": "Manh Trong Kien, Ma Cat Huynh, Nguyen Minh Khang",
 	"license": "ISC",
 	"dependencies": {
 		"dotenv": "^16.4.5",

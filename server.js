@@ -1,22 +1,12 @@
 const express = require("express");
-const { Pool } = require("pg");
+
 require("dotenv").config();
-
-
 
 const indexRouter = require("./apps/home/indexRouter");
 const televisionRouter = require("./apps/television/televisionRouter");
 const mobilephoneRouter = require("./apps/mobilephone/mobilephoneRouter");
 const computerRouter = require("./apps/computer/computerRouter");
 const registrationRouter = require("./apps/registration/registrationRouter");
-
-const pool = new Pool({
-	user: process.env.DB_USERNAME,
-	host: process.env.DB_HOST,
-	database: process.env.DB_NAME,
-	password: process.env.DB_PASSWORD,
-	port: process.env.DB_PORT,
-});
 
 const app = express();
 // Set the view engine to EJS

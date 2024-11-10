@@ -1,3 +1,5 @@
+const { connect } = require("./apps/home/indexRouter");
+
 require("dotenv").config();
 // Update with your config settings.
 
@@ -19,5 +21,26 @@ module.exports = {
 		migrations: {
 			directory: "./migrations",
 		},
+
+		seeds: {
+			directory: "./seeds",
+		},
 	},
+	production:{
+		client: "postgresql",
+		connection: {
+			connectionString: process.env.DATABASE_URL,
+			ssl: {
+				rejectUnauthorized: false,
+			},
+			charset: "utf8",
+		},
+		
+		migrations: {
+			directory: "./migrations",
+		},
+		seeds: {
+			directory: "./seeds",
+		},
+	}
 };
